@@ -1,0 +1,24 @@
+.benefit-card {
+  background-color: white;
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+.benefit-image {
+  position: relative;
+  overflow: hidden;
+}
+
+.benefit-image img {
+  transition: transform 0.5s ease;
+}
+
+.benefit-card:hover .benefit-image img {
+  transform: scale(1.1);
+}
+
+@media (max-width: 768px) {
+  .benefit-grid {
+    grid-template-columns: 1fr;
+  }
+} 

@@ -1,0 +1,55 @@
+Title - MealConnnect
+
+   - A real-time platform to redistribute excess food to NGOs and reduce food waste.
+
+
+Problem Statement - Building a digital platform to connect surplus food sources with NGOs for real-time redistribution and waste reduction.
+  
+Description - "Millions of tons of food go to waste while many people struggle with hunger. There is no free real-time system to efficiently connect food donors with NGOs."
+
+
+Research -
+    	Food wastage is a significant global issue, with nearly one-third of all food produced going to waste. In India alone, millions of tons of food are wasted annually, while over 190 million people struggle with hunger. One of the biggest challenges is the lack of a structured and real-time redistribution system connecting food donors with NGOs efficiently.
+
+Food wastage by country - https://worldpopulationreview.com/country-rankings/food-waste-by-country
+
+FSSAI regulations for food distribution - https://ssrana.in/articles/fssai-food-donation-regulations/
+
+Solution - 
+
+Our platform aims to bridge this gap by leveraging technology and AI-driven automation to create a seamless food donation ecosystem.
+
+1.Real-time food donation system: Food donors can instantly list surplus food, and NGOs can claim it based on need and proximity.
+2.Location-based Matching Algorithm: Ensures food is quickly allocated to the nearest NGOs to reduce wastage and optimize delivery.
+3.AI-powered chatbot assistance: NGOs and donors receive guidance, updates, and assistance in the donation process.
+4.status updates: Volunteers can update the status in real time, ensuring transparency and accountability.
+5.Impact Analytics Dashboard: Provides insights on total food saved, meals provided, and donor participation trends.
+
+
+Tech Stack - 
+
+1.Frontend: React.js, Tailwind CSS
+
+2.Backend: Node.js, Express.js
+
+3.Database: MongoDB
+
+4.Authentication: JWT-based authentication
+
+5.Hosting: On Render
+
+6.Azure AI service for chatbot
+
+
+
+Implementation Flow - 
+
+1.Food Donor posts surplus food details
+2.NGOs Receive alerts based on nearby location and need 
+3.Matching Algorithm assigns requests efficiently
+4.NGOs collects food with the help of volenteer and updates the status
+5.Analytics Dashboard provides insights on impact
+
+
+
+

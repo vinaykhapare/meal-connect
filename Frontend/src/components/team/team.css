@@ -1,0 +1,30 @@
+.team-section {
+  background-color: #f8f9fa;
+}
+
+.team-card {
+  background-color: white;
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+.team-avatar {
+  position: relative;
+  overflow: hidden;
+}
+
+.team-avatar img {
+  width: 100%;
+  height: auto;
+  transition: transform 0.3s ease;
+}
+
+.team-card:hover .team-avatar img {
+  transform: scale(1.05);
+}
+
+@media (max-width: 768px) {
+  .team-grid {
+    grid-template-columns: 1fr;
+  }
+} 

@@ -1,0 +1,50 @@
+users collection
+
+{
+  "_id": ObjectId,
+  "name": "Viraj Bele",
+  "email": "virajbele@gmail.com",
+  "password": "hashed_password",
+  "mobile": "9579534781",
+  "role": "normal_donor"  // Can be "normal_donor", "ngo", or "food_distributor"
+}
+
+
+Normal Donor Collection
+{
+  "_id": ObjectId,
+  "user_id": ObjectId,  // References Users collection
+  "name": "Pranav Patil",
+  "contact": "8530590896",
+  "address": "Ichalkaranji",
+  "possible_serves": 20,
+  "food_type": "Vegetarian Meals"
+}
+
+
+NGO'S Collection
+{
+  "_id": ObjectId,
+  "user_id": ObjectId,  // References Users collection
+  "name": "Helping Hands NGO",
+  "phone": "9975590896",
+  "email": "Helpinghands@gmail.com",
+  "location": "Kolhapur",
+  "password": "hashed_password"
+}
+
+
+Food Distribution Collection
+{
+  "_id": ObjectId,
+  "user_id": ObjectId,  // References Users collection
+  "name": "Food Haven Restaurant",
+  "contact": "7028584769",
+  "address": "Kalmba",
+  "food_type": "Bakery Items",
+  "possible_serves": 50,
+  "expiry": "2025-02-15T18:30:00Z"
+}
+
+
+
