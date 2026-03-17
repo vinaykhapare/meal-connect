@@ -50,57 +50,85 @@ const INITIAL_STATE = {
   foodSourcePinCode: "",
 };
 
-/* ── Validation rules per field ── */
+
 const validators = {
-  name: (v) =>
-    !v.trim()
-      ? "Full name is required"
-      : v.trim().length < 2
-        ? "Name must be at least 2 characters"
-        : "",
-  phone: (v) =>
-    !v.trim()
-      ? "Phone number is required"
-      : !/^\d{10}$/.test(v)
-        ? "Must be exactly 10 digits"
-        : "",
-  email: (v) =>
-    !v.trim()
-      ? "Email address is required"
-      : !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v)
-        ? "Enter a valid email address"
-        : "",
-  location: (v) => (!v.trim() ? "Location is required" : ""),
-  pincode: (v) =>
-    !v.trim()
-      ? "Pincode is required"
-      : !/^\d{6}$/.test(v)
-        ? "Must be exactly 6 digits"
-        : "",
-  password: (v) =>
-    !v
-      ? "Password is required"
-      : v.length < 6
-        ? "Minimum 6 characters required"
-        : !/[A-Z]/.test(v)
-          ? "At least one uppercase letter required"
-          : !/[a-z]/.test(v)
-            ? "At least one lowercase letter required"
-            : !/[0-9]/.test(v)
-              ? "At least one number required"
-              : !/[!@#$%^&*]/.test(v)
-                ? "At least one special character required"
-                : "",
-  foodSourceName: (v) => (!v.trim() ? "Food source name is required" : ""),
-  foodSourceType: (v) => (!v ? "Please select a food source type" : ""),
+  name: (v) => {
+    const value = v.trim();
+
+    if (!value) return "Full name is required";
+
+    if (value.length < 2) return "Name must be at least 2 characters";
+
+    if (value.length > 50) return "Name must be less than 50 characters";
+
+    // Only letters and spaces
+    if (!/^[A-Za-z\s]+$/.test(value))
+      return "Name can only contain letters and spaces";
+
+    // No multiple consecutive spaces
+    if (/\s{2,}/.test(value))
+      return "Name cannot contain multiple spaces in a row";
+
+    // At least first + last name (optional but recommended)
+    if (value.split(" ").length < 2)
+      return "Please enter both first and last name";
+
+    return "";
+  },
+
+  phone: (v) => {
+    const value = v.trim();
+    if (!value) return "Phone number is required";
+    if (!/^\d{10}$/.test(value)) return "Must be exactly 10 digits";
+    if (/^0+$/.test(value)) return "Invalid phone number";
+    return "";
+  },
+
+  email: (v) => {
+    const value = v.trim();
+    if (!value) return "Email address is required";
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(value))
+      return "Enter a valid email address";
+    return "";
+  },
+
+  location: (v) =>
+    !v.trim() ? "Location is required" : "",
+
+  pincode: (v) => {
+    const value = v.trim();
+    if (!value) return "Pincode is required";
+    if (!/^\d{6}$/.test(value)) return "Must be exactly 6 digits";
+    if (value === "000000") return "Invalid pincode";
+    return "";
+  },
+
+  password: (v) => {
+    if (!v) return "Password is required";
+    if (v.length < 8) return "Minimum 8 characters required";
+    if (!/[A-Z]/.test(v)) return "At least one uppercase letter required";
+    if (!/[a-z]/.test(v)) return "At least one lowercase letter required";
+    if (!/[0-9]/.test(v)) return "At least one number required";
+    if (!/[!@#$%^&*]/.test(v))
+      return "At least one special character required";
+    return "";
+  },
+
+  foodSourceName: (v) =>
+    !v.trim() ? "Food source name is required" : "",
+
+  foodSourceType: (v) =>
+    !v ? "Please select a food source type" : "",
+
   foodSourceLocation: (v) =>
     !v.trim() ? "Food source location is required" : "",
-  foodSourcePinCode: (v) =>
-    !v.trim()
-      ? "Pincode is required"
-      : !/^\d{6}$/.test(v)
-        ? "Must be exactly 6 digits"
-        : "",
+
+  foodSourcePinCode: (v) => {
+    const value = v.trim();
+    if (!value) return "Pincode is required";
+    if (!/^\d{6}$/.test(value)) return "Must be exactly 6 digits";
+    return "";
+  },
 };
 
 /* ── Icon turns red when field has error ── */
