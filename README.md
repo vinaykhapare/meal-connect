@@ -133,7 +133,7 @@ Make sure you have the following installed:
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/your-username/meal-connect.git
+git clone https://github.com/vinaykhapare/meal-connect.git
 cd meal-connect
 ```
 
@@ -158,8 +158,6 @@ EMAIL=your_email@example.com
 EMAIL_PASS=your_email_password
 JWT_SECRET=your_super_secret_key
 ```
-
-> ⚠️ **Never commit your `.env` file.** Add it to `.gitignore`.
 
 ```bash
 # Start the backend server
