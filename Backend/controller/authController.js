@@ -29,14 +29,73 @@ function getTransporter() {
 
 async function sendOtpEmail({ to, otp }) {
   const from = process.env.EMAIL;
-  const appName = process.env.APP_NAME || "MealConnect";
+  const appName = "Meal Connect" || process.env.APP_NAME;
 
   const transporter = getTransporter();
+
   await transporter.sendMail({
     from: `"${appName}" <${from}>`,
     to,
-    subject: `${appName} - Password Reset OTP`,
-    text: `Your OTP for password reset is: ${otp}\n\nThis OTP expires in 5 minutes.\n\nIf you did not request this, please ignore this email.`,
+    subject: `${appName} • Password Reset OTP`,
+
+    text: `Hello,
+
+We received a request to reset your password for ${appName}.
+
+Your One-Time Password (OTP) is: ${otp}
+
+This OTP is valid for 5 minutes.
+
+If you did not request this, please ignore this email.
+
+Regards,  
+${appName} Team`,
+
+    // HTML version
+    html: `
+      <div style="font-family: Arial, sans-serif; max-width: 500px; margin: auto; padding: 20px; border: 1px solid #eee; border-radius: 8px;">
+        
+        <h2 style="text-align: center; color: #27ae60;">
+          🍽️ ${appName}
+        </h2>
+
+        <h3 style="color: #333;">Password Reset Request</h3>
+
+        <p>Hello,</p>
+
+        <p>We received a request to reset your password. Use the OTP below to continue:</p>
+
+        <div style="
+          text-align: center;
+          margin: 25px 0;
+        ">
+          <span style="
+            font-size: 28px;
+            font-weight: bold;
+            letter-spacing: 6px;
+            background: #f1f1f1;
+            padding: 12px 20px;
+            border-radius: 6px;
+            display: inline-block;
+          ">
+            ${otp}
+          </span>
+        </div>
+
+        <p style="text-align: center;">
+          ⏳ This OTP will expire in <strong>5 minutes</strong>
+        </p>
+
+        <p>If you didn’t request this, you can safely ignore this email.</p>
+
+        <hr style="margin: 25px 0;" />
+
+        <p style="font-size: 12px; color: #888; text-align: center;">
+          This is an automated message from ${appName}. Please do not reply.
+        </p>
+
+      </div>
+    `,
   });
 }
 
