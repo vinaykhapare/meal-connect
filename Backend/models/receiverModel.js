@@ -14,6 +14,8 @@ const receiverSchema = new mongoose.Schema({
     email: { type: String, required: true, match: /^.+@.+$/ }
   },
   password: { type: String, required: true },
+  otp: { type: String, default: null },
+  otpExpiry: { type: Date, default: null },
   verificationStatus: {
     status: {
       type: String,

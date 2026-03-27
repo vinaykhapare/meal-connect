@@ -9,6 +9,8 @@ const foodRoutes = require("./routes/foodRoutes.js");
 const analyticsRoutes = require("./routes/analyticsRoutes.js");
 const contactRoutes = require("./routes/contactRoutes.js");
 const adminRoutes = require("./routes/adminRoutes.js");
+const insightsRoutes = require("./routes/insights.js");
+const authRoutes = require("./routes/authRoutes.js");
 
 const {connectdb} = require("./utility/connectDb.js");
 
@@ -33,6 +35,8 @@ app.use("/api/food", foodRoutes);
 app.use("/api/analytics", analyticsRoutes);
 app.use("/api/contact", contactRoutes);
 app.use("/api/admin", adminRoutes);
+app.use("/api/insights", insightsRoutes);
+app.use("/auth", authRoutes);
 
 app.get("/", (req, res) => {
     res.json("welcome to MealConnect");

@@ -19,7 +19,9 @@ const donorSchema = new mongoose.Schema({
     sourceLocation: { type: String, default: '' },
     pincode: { type: Number, default: null }
   },
-  password: { type: String, required: true }
+  password: { type: String, required: true },
+  otp: { type: String, default: null },
+  otpExpiry: { type: Date, default: null }
 }, { timestamps: true });
 
 // Add a pre-save middleware to ensure email is lowercase

@@ -24,6 +24,7 @@ import HistoryIcon from "@mui/icons-material/History";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
 import PersonIcon from "@mui/icons-material/Person";
 import LoginIcon from "@mui/icons-material/Login";
+import QueryStatsIcon from "@mui/icons-material/QueryStats";
 import { useAuth } from "../../context/AuthContext";
 import mealconnectLogo from "../../assets/mealconnect_logo_primary.svg";
 
@@ -79,6 +80,7 @@ function AdminNavbar({ user, handleLogout }) {
 
   const adminLinks = [
     { label: "Dashboard",       to: "/admin/dashboard",              icon: <DashboardIcon fontSize="small" /> },
+    { label: "Insights",        to: "/admin/insights",               icon: <QueryStatsIcon fontSize="small" /> },
     { label: "NGO Requests",    to: "/admin/dashboard?tab=requests", icon: <HowToRegIcon fontSize="small" /> },
     { label: "NGO Management",  to: "/admin/dashboard?tab=ngos",     icon: <BusinessIcon fontSize="small" /> },
     { label: "User Management", to: "/admin/dashboard?tab=users",    icon: <PeopleIcon fontSize="small" /> },
@@ -252,10 +254,12 @@ function Navbar() {
     { label: "Contact",   to: "/contact",  icon: <ContactMailIcon sx={{ fontSize: 16 }} /> },
     { label: "Donate",    to: "/donate",   icon: <VolunteerActivismIcon sx={{ fontSize: 16 }} /> },
     { label: "Dashboard", to: "/dashboard",icon: <DashboardIcon sx={{ fontSize: 16 }} /> },
+    { label: "Insights",  to: "/insights/user", icon: <QueryStatsIcon sx={{ fontSize: 16 }} /> },
   ];
 
   const ngoLinks = [
     { label: "Overview",    to: "/ngo/dashboard",              icon: <DashboardIcon sx={{ fontSize: 16 }} /> },
+    { label: "Insights",    to: "/ngo/insights",               icon: <QueryStatsIcon sx={{ fontSize: 16 }} /> },
     { label: "My Profile",  to: "/ngo/dashboard?tab=profile",  icon: <PersonIcon sx={{ fontSize: 16 }} /> },
     { label: "History",     to: "/ngo/dashboard?tab=history",  icon: <HistoryIcon sx={{ fontSize: 16 }} /> },
     { label: "Nearby NGOs", to: "/ngo/dashboard?tab=nearby",   icon: <LocationOnIcon sx={{ fontSize: 16 }} /> },

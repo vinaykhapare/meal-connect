@@ -22,6 +22,12 @@ import NGODashboard from "./components/ngo/NGODashboard";
 import LoginSelector from "./components/auth/LoginSelector";
 import UserLogin from "./components/auth/UserLogin";
 import NGOLogin from "./components/auth/NGOLogin";
+import UserInsights from "./components/insights/UserInsights";
+import NgoInsights from "./components/insights/NgoInsights";
+import AdminInsights from "./components/insights/AdminInsights";
+import ForgotPassword from "./pages/ForgotPassword";
+import VerifyOtp from "./pages/VerifyOtp";
+import ResetPassword from "./pages/ResetPassword";
 
 function App() {
   const { loading, user } = useAuth();
@@ -51,6 +57,9 @@ function App() {
           <Route path="/admin/login" element={<AdminLogin />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/ngo-registration" element={<NGORegistration />} />
+          <Route path="/forgot-password" element={<ForgotPassword />} />
+          <Route path="/verify-otp" element={<VerifyOtp />} />
+          <Route path="/reset-password" element={<ResetPassword />} />
 
           {/* Protected Routes */}
           <Route element={<ProtectedRoute />}>
@@ -59,16 +68,21 @@ function App() {
             <Route path="/donate" element={<Donationpage />} />
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/donate/form" element={<Fooddonation />} />
+            <Route path="/insights/user" element={<UserInsights />} />
 
             {/* NGO-specific routes */}
             {user?.role === "ngo" && (
-              <Route path="/ngo/dashboard" element={<NGODashboard />} />
+              <>
+                <Route path="/ngo/dashboard" element={<NGODashboard />} />
+                <Route path="/ngo/insights" element={<NgoInsights />} />
+              </>
             )}
           </Route>
 
           {/* Admin Routes */}
           <Route element={<AdminProtectedRoute />}>
             <Route path="/admin/dashboard" element={<AdminDashboard />} />
+            <Route path="/admin/insights" element={<AdminInsights />} />
           </Route>
 
           {/* 404 Route */}
