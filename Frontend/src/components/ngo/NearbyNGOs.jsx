@@ -18,8 +18,9 @@ import BusinessOutlinedIcon from "@mui/icons-material/BusinessOutlined";
 import PinDropOutlinedIcon from "@mui/icons-material/PinDropOutlined";
 import ErrorOutlineIcon from "@mui/icons-material/ErrorOutline";
 import VerifiedIcon from "@mui/icons-material/Verified";
+import { API_ORIGIN } from "../../services/apiBase";
 
-const API = "http://localhost:3000/api/receiver";
+const API = `${API_ORIGIN}/api/receiver`;
 const getToken = () => localStorage.getItem("token");
 
 export default function NearbyNGOs() {

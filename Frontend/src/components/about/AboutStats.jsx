@@ -3,6 +3,7 @@ import CircularProgress from '@mui/joy/CircularProgress';
 import Chip from '@mui/joy/Chip';
 import axios from 'axios';
 import { motion, useInView } from 'framer-motion';
+import { API_ORIGIN } from '../../services/apiBase';
 import { images } from "../../assets/images";
 
 /* ── Animated count-up number ── */
@@ -150,7 +151,7 @@ function AboutStats() {
   useEffect(() => {
     const fetchStats = async () => {
       try {
-        const response = await axios.get('http://localhost:3000/api/analytics/distribution');
+        const response = await axios.get(`${API_ORIGIN}/api/analytics/distribution`);
         if (response.data.success) {
           const { distributionData } = response.data.data;
           const totalDistributed = distributionData.reduce((acc, curr) => acc + curr.distributed, 0);

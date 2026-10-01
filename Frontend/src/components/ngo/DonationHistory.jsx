@@ -19,8 +19,9 @@ import ErrorOutlineIcon from "@mui/icons-material/ErrorOutline";
 import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
 import CancelOutlinedIcon from "@mui/icons-material/CancelOutlined";
 import HourglassEmptyIcon from "@mui/icons-material/HourglassEmpty";
+import { API_ORIGIN } from "../../services/apiBase";
 
-const API = "http://localhost:3000/api/receiver";
+const API = `${API_ORIGIN}/api/receiver`;
 const getToken = () => localStorage.getItem("token");
 
 const statusStyles = {

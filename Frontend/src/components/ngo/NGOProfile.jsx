@@ -26,8 +26,9 @@ import NotesOutlinedIcon from "@mui/icons-material/NotesOutlined";
 import VerifiedIcon from "@mui/icons-material/Verified";
 import ErrorOutlineIcon from "@mui/icons-material/ErrorOutline";
 import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
+import { API_ORIGIN } from "../../services/apiBase";
 
-const API = "http://localhost:3000/api/receiver";
+const API = `${API_ORIGIN}/api/receiver`;
 const getToken = () => localStorage.getItem("token");
 
 /* ── shared input style ── */

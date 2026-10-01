@@ -1,13 +1,14 @@
 import { createContext, useContext, useState, useEffect } from 'react';
 import { authService } from '../services/authService';
+import { API_ORIGIN } from '../services/apiBase';
 
 const AuthContext = createContext();
 
 /* ── Pick the correct /me endpoint based on role ── */
 const getProfileUrl = (role) => {
-  if (role === 'ngo')   return 'http://127.0.0.1:3000/api/receiver/me';
+  if (role === 'ngo')   return `${API_ORIGIN}/api/receiver/me`;
   if (role === 'admin') return null; // admins have no separate profile endpoint
-  return 'http://127.0.0.1:3000/api/donor/me';   // default: donor
+  return `${API_ORIGIN}/api/donor/me`;   // default: donor
 };
 
 /* ── Extract profile object regardless of response shape ── */
@@ -80,7 +81,7 @@ export function AuthProvider({ children }) {
   const updateProfile = async (updatedData) => {
     try {
       const token = localStorage.getItem('token');
-      const response = await fetch('http://127.0.0.1:3000/api/donor/update', {
+      const response = await fetch(`${API_ORIGIN}/api/donor/update`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',

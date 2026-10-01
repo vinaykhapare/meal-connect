@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { API_ORIGIN } from "../../services/apiBase";
 
 // MUI Joy
 import Card from "@mui/joy/Card";
@@ -123,7 +124,7 @@ function Contactus() {
     e.preventDefault();
     setLoading(true);
     try {
-      const response = await fetch("http://127.0.0.1:3000/api/contact/submit", {
+      const response = await fetch(`${API_ORIGIN}/api/contact/submit`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),

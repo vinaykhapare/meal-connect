@@ -2,6 +2,7 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../context/AuthContext";
+import { API_ORIGIN } from "../../services/apiBase";
 import QRModal from "../donation/QRModal";
 
 // MUI Joy only
@@ -138,7 +139,7 @@ function Fooddonation() {
 
     try {
       const token = localStorage.getItem("token");
-      const response = await fetch("http://localhost:3000/api/food/donate", {
+      const response = await fetch(`${API_ORIGIN}/api/food/donate`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

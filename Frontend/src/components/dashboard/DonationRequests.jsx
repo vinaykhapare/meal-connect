@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { API_ORIGIN } from '../../services/apiBase';
 import {
   Table,
   Sheet,
@@ -24,7 +25,7 @@ function DonationRequests() {
   const fetchDonations = async () => {
     try {
       const token = localStorage.getItem('token');
-      const response = await fetch('http://localhost:3000/api/receiver/available-donations', {
+      const response = await fetch(`${API_ORIGIN}/api/receiver/available-donations`, {
         headers: {
           'Authorization': `Bearer ${token}`
         }
@@ -46,7 +47,7 @@ function DonationRequests() {
   const handleStatusUpdate = async (donationId, newStatus) => {
     try {
       const token = localStorage.getItem('token');
-      const response = await fetch(`http://localhost:3000/api/receiver/accept-donation/${donationId}`, {
+      const response = await fetch(`${API_ORIGIN}/api/receiver/accept-donation/${donationId}`, {
         method: 'POST',
         headers: {
           'Authorization': `Bearer ${token}`,

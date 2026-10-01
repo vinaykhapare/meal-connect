@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { API_ORIGIN } from "../../services/apiBase";
 import Card from "@mui/joy/Card";
 import CardActions from "@mui/joy/CardActions";
 import CardContent from "@mui/joy/CardContent";
@@ -41,7 +42,7 @@ function Login() {
         password: formData.password.trim()
       });
 
-      const response = await fetch("http://127.0.0.1:3000/api/receiver/login", {
+      const response = await fetch(`${API_ORIGIN}/api/receiver/login`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

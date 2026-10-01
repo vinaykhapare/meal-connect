@@ -30,8 +30,9 @@ import ErrorOutlineIcon from "@mui/icons-material/ErrorOutline";
 import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
 import NGOManagement from "./NGOManagement";
 import UserManagement from "./UserManagement";
+import { API_ORIGIN } from "../../services/apiBase";
 
-const API = "http://localhost:3000/api/admin";
+const API = `${API_ORIGIN}/api/admin`;
 const getToken = () => localStorage.getItem("token");
 
 const tabIndexMap = { requests: 0, ngos: 1, users: 2 };

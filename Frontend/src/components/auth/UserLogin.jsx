@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { useAuth } from "../../context/AuthContext";
+import { API_ORIGIN } from "../../services/apiBase";
 
 // MUI Joy
 import FormControl from "@mui/joy/FormControl";
@@ -41,7 +42,7 @@ function UserLogin() {
     setLoading(true);
     setError("");
     try {
-      const response = await fetch("http://127.0.0.1:3000/api/donor/login", {
+      const response = await fetch(`${API_ORIGIN}/api/donor/login`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({

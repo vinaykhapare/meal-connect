@@ -177,6 +177,12 @@ cd Frontend
 # Install dependencies
 npm install
 
+Create a `.env` file inside the `Backend/` folder:
+
+```env
+VITE_API_ORIGIN="http://localhost:3000"
+```
+
 # Start the development server
 npm run dev
 ```

@@ -4,8 +4,9 @@ import QrCodeScannerIcon from "@mui/icons-material/QrCodeScanner";
 import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
 import ErrorOutlineIcon from "@mui/icons-material/ErrorOutline";
 import CloseIcon from "@mui/icons-material/Close";
+import { API_ORIGIN } from "../../services/apiBase";
 
-const API = "http://localhost:3000/api/receiver";
+const API = `${API_ORIGIN}/api/receiver`;
 const getToken = () => localStorage.getItem("token");
 
 /**

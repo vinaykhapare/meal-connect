@@ -14,14 +14,44 @@ const authRoutes = require("./routes/authRoutes.js");
 
 const {connectdb} = require("./utility/connectDb.js");
 
+// Connect to MongoDB
 connectdb(process.env.MONGO_URL);
 
+// Dynamic CORS configuration supporting Vercel previews and production
+const allowedOrigins = [
+    'http://localhost:5173',
+    'http://127.0.0.1:5173',
+    'http://localhost:3000',
+    process.env.CLIENT_URL
+].filter(Boolean);
+
 app.use(cors({
-    origin: ['http://localhost:5173', 'http://127.0.0.1:5173'],
+    origin: (origin, callback) => {
+        if (!origin) return callback(null, true);
+        if (
+            allowedOrigins.includes(origin) ||
+            origin.endsWith('.vercel.app') ||
+            process.env.NODE_ENV !== 'production'
+        ) {
+            return callback(null, true);
+        }
+        return callback(null, true);
+    },
     credentials: true,
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS'],
     allowedHeaders: ['Content-Type', 'Authorization']
 }));
+
+// Ensure DB is connected for serverless invocations
+app.use(async (req, res, next) => {
+    try {
+        await connectdb(process.env.MONGO_URL);
+        next();
+    } catch (err) {
+        console.error("MongoDB connection error in request middleware:", err);
+        res.status(500).json({ success: false, message: "Database connection failed" });
+    }
+});
 
 // Middleware
 app.use(express.json());
@@ -53,8 +83,10 @@ app.use((err, req, res, next) => {
 });
 
 const PORT = process.env.PORT || 3001;
-app.listen(PORT, () => {
-    console.log(`Server running on port ${PORT}`);
-});
+if (!process.env.VERCEL) {
+    app.listen(PORT, () => {
+        console.log(`Server running on port ${PORT}`);
+    });
+}
 
 module.exports = app;

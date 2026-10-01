@@ -1,6 +1,7 @@
 import axios from 'axios';
+import { API_ORIGIN } from './apiBase';
 
-const API_URL = 'http://127.0.0.1:3000/api/donor';
+const API_URL = `${API_ORIGIN}/api/donor`;
 
 export const authService = {
     login: async (credentials) => {

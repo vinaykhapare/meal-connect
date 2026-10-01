@@ -37,8 +37,9 @@ import PhoneOutlinedIcon from "@mui/icons-material/PhoneOutlined";
 import LocationOnOutlinedIcon from "@mui/icons-material/LocationOnOutlined";
 import PinDropOutlinedIcon from "@mui/icons-material/PinDropOutlined";
 import PeopleOutlinedIcon from "@mui/icons-material/PeopleOutlined";
+import { API_ORIGIN } from "../../services/apiBase";
 
-const API = "http://localhost:3000/api/admin";
+const API = `${API_ORIGIN}/api/admin`;
 const getToken = () => localStorage.getItem("token");
 
 const inputSx = {

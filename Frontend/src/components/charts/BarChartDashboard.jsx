@@ -2,6 +2,7 @@ import { useState, useEffect, useMemo } from 'react';
 import { BarChart } from '@mui/x-charts/BarChart';
 import { motion } from 'framer-motion';
 import { useAuth } from '../../context/AuthContext';
+import { API_ORIGIN } from '../../services/apiBase';
 
 // MUI Joy
 import Select from '@mui/joy/Select';
@@ -123,7 +124,7 @@ function BarChartDashboard() {
         setLoading(true);
         const token = localStorage.getItem('token');
         const response = await fetch(
-          `http://localhost:3000/api/analytics/distribution?period=${timeFilter}`,
+          `${API_ORIGIN}/api/analytics/distribution?period=${timeFilter}`,
           { headers: { Authorization: `Bearer ${token}`, 'Content-Type': 'application/json' } }
         );
         const data = await response.json();

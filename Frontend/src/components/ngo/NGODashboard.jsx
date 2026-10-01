@@ -31,8 +31,9 @@ import NGOProfile from "./NGOProfile";
 import DonationHistory from "./DonationHistory";
 import NearbyNGOs from "./NearbyNGOs";
 import QRScanner from "./QRScanner";
+import { API_ORIGIN } from "../../services/apiBase";
 
-const API = "http://localhost:3000/api/receiver";
+const API = `${API_ORIGIN}/api/receiver`;
 const getToken = () => localStorage.getItem("token");
 
 

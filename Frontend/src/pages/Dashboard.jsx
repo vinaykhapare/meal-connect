@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useAuth } from "../context/AuthContext";
+import { API_ORIGIN } from "../services/apiBase";
 
 // Components
 import Sidebardashboard from "../components/dashboard/Sidebardashboard";
@@ -257,7 +258,7 @@ function Dashboard() {
       try {
         const token = localStorage.getItem("token");
         const res = await fetch(
-          "http://localhost:3000/api/food/user-donations",
+          `${API_ORIGIN}/api/food/user-donations`,
           {
             headers: { Authorization: `Bearer ${token}` },
           },
@@ -282,7 +283,7 @@ function Dashboard() {
     try {
       const token = localStorage.getItem("token");
       const res = await fetch(
-        `http://localhost:3000/api/food/update-status/${id}`,
+        `${API_ORIGIN}/api/food/update-status/${id}`,
         {
           method: "PATCH",
           headers: {

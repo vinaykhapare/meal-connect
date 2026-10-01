@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { API_ORIGIN } from "../../services/apiBase";
 import {
   TextField,
   Button,
@@ -103,7 +104,7 @@ export default function NGORegistration() {
     setLoading(true);
     setError("");
     try {
-      const response = await fetch("http://127.0.0.1:3000/api/receiver/register", {
+      const response = await fetch(`${API_ORIGIN}/api/receiver/register`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
