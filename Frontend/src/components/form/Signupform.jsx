@@ -18,6 +18,7 @@ import { useState } from "react";
 import Select from "@mui/joy/Select";
 import Link from '@mui/joy/Link';
 import Option from "@mui/joy/Option";
+import { API_ORIGIN } from "../../services/apiBase";
 
 function Signupform() {
   const [isFoodSource, setIsFoodSource] = useState(false);
@@ -52,7 +53,7 @@ function Signupform() {
     e.preventDefault();
     try {
       console.log(registerData)
-      const response = await fetch("https://dummy.restapiexample.com/api/v1/create", {
+      const response = await fetch(`${API_ORIGIN}/api/donor/signup`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

@@ -1,5 +1,3 @@
-export const API_ORIGIN =
-  import.meta.env.VITE_API_ORIGIN !== undefined
-    ? import.meta.env.VITE_API_ORIGIN
-    : (import.meta.env.PROD ? "" : "http://localhost:3000");
+export const API_ORIGIN = (import.meta.env.VITE_API_ORIGIN || "").replace(/\/$/, "");
 
+export default API_ORIGIN;

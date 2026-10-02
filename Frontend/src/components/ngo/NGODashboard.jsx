@@ -46,9 +46,6 @@ const TAB_CONFIG = [
   { label: "Nearby NGOs",      icon: <GroupsIcon sx={{ fontSize: 17 }} /> },
 ];
 
-// const API = "http://localhost:3000/api/receiver";
-// const getToken = () => localStorage.getItem("token");
-
 
 
 /* ── Status helpers ── */
